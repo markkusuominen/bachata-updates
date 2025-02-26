@@ -13,12 +13,6 @@ bachata-updates/
 ├── templates/               # Template files for contributors
 │   ├── update-template.json # Template for creating new updates
 │   └── contributor-guide.md # Guidelines for contributors
-├── translations/            # For independent translator contributions
-│   ├── es/                  # Spanish language directory
-│   │   ├── updates/         # Translated updates
-│   │   └── progress.json    # Translation progress tracking
-│   ├── fr/                  # French language directory
-│   └── ...                  # Other languages
 └── README.md                # This file
 ```
 
@@ -27,9 +21,8 @@ bachata-updates/
 This repository separates content from code to enable:
 
 1. **Easy Content Updates**: Update the "What's New" page without code deployments
-2. **Translator Collaboration**: Provide a structured way for independent translators to contribute
-3. **Version History**: Track changes to content over time using Git
-4. **Content Review**: Use GitHub's pull request system for content review
+2. **Version History**: Track changes to content over time using Git
+3. **Simplified Management**: Maintain content independently from application code
 
 ## For Contributors
 
@@ -41,4 +34,4 @@ The Bachata Connection Explorer application fetches these JSON files directly fr
 
 ## License
 
-Copyright © 2025 Markku Suominen. All rights reserved.
+Copyright 2025 Markku Suominen. All rights reserved.
