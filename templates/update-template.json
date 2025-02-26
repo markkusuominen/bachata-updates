@@ -1,0 +1,14 @@
+{
+  "id": "unique-id-for-update",
+  "title": "Update Title",
+  "content": "Description of the update or announcement. Be concise but informative.",
+  "date": "YYYY-MM-DD",
+  "badge": null
+}
+
+// Notes:
+// - "id" should be a unique identifier, use kebab-case
+// - "title" should be brief and descriptive
+// - "content" should provide clear information about the update
+// - "date" should be in ISO format: YYYY-MM-DD
+// - "badge" can be "new", "recent", or null

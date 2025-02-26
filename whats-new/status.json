@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "code": "en",
+      "name": "English",
+      "progress": 100,
+      "status": "complete"
+    },
+    {
+      "code": "fi",
+      "name": "Finnish",
+      "progress": 100,
+      "status": "complete"
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "progress": 85,
+      "status": "in-review"
+    },
+    {
+      "code": "de",
+      "name": "German",
+      "progress": 80,
+      "status": "in-progress"
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "progress": 85,
+      "status": "in-review"
+    },
+    {
+      "code": "et",
+      "name": "Estonian",
+      "progress": 75,
+      "status": "in-progress"
+    },
+    {
+      "code": "pl",
+      "name": "Polish",
+      "progress": 60,
+      "status": "machine-translation"
+    }
+  ]
+}

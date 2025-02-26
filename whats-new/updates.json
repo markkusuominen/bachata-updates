@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": "finnish-translation-completed",
+      "title": "Finnish Translation Completed",
+      "content": "The Finnish translation has been fully reviewed and is now complete. All sections of the research paper and About page are available in Finnish.",
+      "date": "2025-02-25",
+      "badge": "new"
+    },
+    {
+      "id": "polish-language-added",
+      "title": "Polish Language Added",
+      "content": "Polish has been added to our supported languages. The translation is currently machine-generated and undergoing review by native speakers.",
+      "date": "2025-02-20",
+      "badge": "recent"
+    },
+    {
+      "id": "estonian-translation-progress",
+      "title": "Estonian Translation Progress",
+      "content": "Estonian translation is now 75% complete. Key sections of the research paper have been reviewed by native speakers.",
+      "date": "2025-02-15",
+      "badge": null
+    },
+    {
+      "id": "site-search-functionality",
+      "title": "Site Search Functionality Added",
+      "content": "We've added a search feature that helps you find specific terms or concepts across all languages. Try it from the navigation bar!",
+      "date": "2025-02-10",
+      "badge": null
+    },
+    {
+      "id": "french-translation-update",
+      "title": "French Translation Update",
+      "content": "French translation is now 85% complete. Major sections have been reviewed and approved by native speakers.",
+      "date": "2025-02-05",
+      "badge": null
+    },
+    {
+      "id": "german-translation-progress",
+      "title": "German Translation Progress",
+      "content": "German translation has reached 80% completion. Key terminology sections have been professionally translated.",
+      "date": "2025-01-30",
+      "badge": null
+    },
+    {
+      "id": "responsive-design-improvements",
+      "title": "Responsive Design Improvements",
+      "content": "We've enhanced the site's mobile experience with better typography and improved navigation on small screens.",
+      "date": "2025-01-25",
+      "badge": null
+    },
+    {
+      "id": "spanish-translation-update",
+      "title": "Spanish Translation Update",
+      "content": "Spanish translation has been updated with improved terminology consistency across all sections.",
+      "date": "2025-01-20",
+      "badge": null
+    }
+  ]
+}

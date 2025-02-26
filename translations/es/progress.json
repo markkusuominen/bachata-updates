@@ -1,0 +1,22 @@
+{
+  "language": "es",
+  "name": "Spanish",
+  "lastUpdated": "2025-02-25",
+  "translator": "María González",
+  "reviewers": ["Carlos Rodriguez"],
+  "completedSections": [
+    "header",
+    "home",
+    "about",
+    "research-paper-intro"
+  ],
+  "inProgressSections": [
+    "research-paper-methodology",
+    "research-paper-results"
+  ],
+  "pendingSections": [
+    "research-paper-conclusion",
+    "faq"
+  ],
+  "notes": "Main navigation and core sections are complete. Working on research paper details."
+}
