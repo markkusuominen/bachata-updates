@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DataGrid, GridRowsProp, GridColDef, GridRowModel } from '@mui/x-data-grid';
-import { Box, Button, Typography, Alert } from '@mui/material';
+import { Box, Button, Typography, Alert, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 /**
  * Props for JsonSpreadsheetEditor
@@ -28,12 +29,32 @@ const JsonSpreadsheetEditor: React.FC<JsonSpreadsheetEditorProps> = ({ data, onS
   
   // Determine columns dynamically from data
   const columns: GridColDef[] = data.length > 0
-    ? Object.keys(data[0]).map((key) => ({
-        field: key,
-        headerName: key,
-        flex: 1,
-        editable: true,
-      }))
+    ? [
+        ...Object.keys(data[0]).map((key) => ({
+          field: key,
+          headerName: key,
+          flex: 1,
+          editable: true,
+        })),
+        {
+          field: 'actions',
+          headerName: '',
+          sortable: false,
+          filterable: false,
+          width: 60,
+          align: 'center',
+          renderCell: (params) => (
+            <IconButton
+              aria-label="Delete Row"
+              color="error"
+              size="small"
+              onClick={() => handleDeleteRow(params.row.id)}
+            >
+              <DeleteIcon fontSize="small" />
+            </IconButton>
+          ),
+        },
+      ]
     : [];
 
   // Handle cell edit
@@ -41,6 +62,14 @@ const JsonSpreadsheetEditor: React.FC<JsonSpreadsheetEditorProps> = ({ data, onS
     const updatedRows = rows.map((row) => (row.id === newRow.id ? newRow : row));
     setRows(updatedRows);
     return newRow;
+  };
+
+  /**
+   * Delete a row by id
+   * @param id The row id to delete
+   */
+  const handleDeleteRow = (id: number) => {
+    setRows((prevRows) => prevRows.filter((row) => row.id !== id));
   };
 
   // Handle save
@@ -60,14 +89,14 @@ const JsonSpreadsheetEditor: React.FC<JsonSpreadsheetEditorProps> = ({ data, onS
     <Box>
       {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
       <Typography variant="subtitle1" gutterBottom>Spreadsheet Editor</Typography>
-      <Box sx={{ height: 400, width: '100%', mb: 2 }}>
+      <Box sx={{ height: 500, width: '100vw', position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', mb: 2 }}>
         <DataGrid
           rows={rows}
           columns={columns}
           disableRowSelectionOnClick
           processRowUpdate={handleRowEdit}
-          experimentalFeatures={{ newEditingApi: true }}
           loading={loading}
+          autoHeight={false}
         />
       </Box>
       <Button variant="contained" color="primary" onClick={handleSave} disabled={loading}>

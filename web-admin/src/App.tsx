@@ -268,14 +268,14 @@ const App: React.FC = () => {
           </Typography>
           
           {/* JSON File Management UI */}
-          <Box display="flex" gap={4}>
-            {/* File List Sidebar */}
-            <Box minWidth={220}>
+          <Box display="flex" flexDirection="column" gap={3}>
+            {/* File List */}
+            <Box>
               <Typography variant="subtitle1" gutterBottom>JSON Files</Typography>
               <Button variant="outlined" size="small" onClick={fetchFiles} sx={{ mb: 1 }}>
                 Refresh List
               </Button>
-              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, p: 1, maxHeight: 300, overflowY: 'auto' }}>
+              <Box sx={{ border: '1px solid #ddd', borderRadius: 1, p: 1, maxHeight: 200, overflowY: 'auto' }}>
                 {files.length === 0 ? (
                   <Typography variant="body2" color="text.secondary">No files found.</Typography>
                 ) : (
@@ -295,7 +295,7 @@ const App: React.FC = () => {
               </Box>
             </Box>
             {/* File Content Viewer */}
-            <Box flex={1}>
+            <Box width="100%">
               <Typography variant="subtitle1" gutterBottom>File Content</Typography>
               {fileContent && selectedFile ? (
                 (() => {
@@ -323,6 +323,52 @@ const App: React.FC = () => {
                               body: JSON.stringify({
                                 file: selectedFile,
                                 content: JSON.stringify(newData, null, 2),
+                                message: `Update ${selectedFile}`,
+                              }),
+                            });
+                            const data = await resp.json();
+                            if (data.error) throw new Error(data.error);
+                            setNotif({ type: 'success', message: 'File saved successfully!' });
+                            fetchFiles();
+                            fetchFileContent(selectedFile);
+                          } catch (err: any) {
+                            setNotif({ type: 'error', message: 'Failed to save file.' });
+                          } finally {
+                            setLoading(false);
+                          }
+                        }}
+                      />
+                    );
+                  }
+                  // If parsed is an object with a single array property, use spreadsheet editor for that array
+                  if (
+                    parsed &&
+                    typeof parsed === 'object' &&
+                    !Array.isArray(parsed) &&
+                    Object.keys(parsed).length === 1 &&
+                    Array.isArray(parsed[Object.keys(parsed)[0]])
+                  ) {
+                    const arrayKey = Object.keys(parsed)[0];
+                    const arrayData = parsed[arrayKey];
+                    return (
+                      <JsonSpreadsheetEditor
+                        data={arrayData}
+                        loading={loading}
+                        error={error}
+                        onSave={async (newData) => {
+                          setLoading(true);
+                          setNotif(null);
+                          try {
+                            const newObj = { ...parsed, [arrayKey]: newData };
+                            const resp = await fetch('/.netlify/functions/github', {
+                              method: 'POST',
+                              headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                file: selectedFile,
+                                content: JSON.stringify(newObj, null, 2),
                                 message: `Update ${selectedFile}`,
                               }),
                             });
