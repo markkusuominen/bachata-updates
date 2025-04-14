@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH="bachata_paradox_24"
+BRANCH="bachata-updates_2"
 REMOTE="origin"
 COMMIT_MSG="Automated commit"
 

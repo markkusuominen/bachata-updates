@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH="bachata-updates_1"
+BRANCH="bachata-updates_2"
 REMOTE="origin"
 COMMIT_MSG="Automated commit"
 
