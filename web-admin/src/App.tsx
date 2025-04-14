@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import JsonSpreadsheetEditor from './components/JsonSpreadsheetEditor';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -297,58 +298,104 @@ const App: React.FC = () => {
             <Box flex={1}>
               <Typography variant="subtitle1" gutterBottom>File Content</Typography>
               {fileContent && selectedFile ? (
-                <>
-                  {/* File metadata */}
-                  <Box mb={1}>
-                    <Typography variant="caption" color="text.secondary">
-                      <b>Name:</b> {selectedFile}
-                      {fileMeta?.size && <> &nbsp; <b>Size:</b> {fileMeta.size} bytes</>}
-                      {fileMeta?.url && (
-                        <>
-                          &nbsp; <a href={fileMeta.url} target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                        </>
-                      )}
-                    </Typography>
-                  </Box>
-                  {/* JSON editor */}
-                  <textarea
-                    style={{ width: '100%', minHeight: 180, fontFamily: 'monospace', fontSize: 14, marginBottom: 8 }}
-                    value={editContent}
-                    onChange={e => setEditContent(e.target.value)}
-                  />
-                  <Box display="flex" gap={1}>
-                    <Button variant="contained" color="primary" size="small" onClick={async () => {
-                      setLoading(true);
-                      setNotif(null);
-                      try {
-                        const resp = await fetch('/.netlify/functions/github', {
-                          method: 'POST',
-                          headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-Type': 'application/json',
-                          },
-                          body: JSON.stringify({
-                            file: selectedFile,
-                            content: editContent,
-                            message: `Update ${selectedFile}`,
-                          }),
-                        });
-                        const data = await resp.json();
-                        if (data.error) throw new Error(data.error);
-                        setNotif({ type: 'success', message: 'File saved successfully!' });
-                        fetchFiles();
-                        fetchFileContent(selectedFile);
-                      } catch (err: any) {
-                        setNotif({ type: 'error', message: 'Failed to save file.' });
-                      } finally {
-                        setLoading(false);
-                      }
-                    }}>Save</Button>
-                    <Button variant="outlined" color="error" size="small" onClick={() => setConfirmDelete(true)}>
-                      Delete
-                    </Button>
-                  </Box>
-                </>
+                (() => {
+                  let parsed: any = null;
+                  try {
+                    parsed = JSON.parse(fileContent);
+                  } catch (e) { /* ignore */ }
+                  // If parsed is an array of objects, use spreadsheet editor
+                  if (Array.isArray(parsed) && parsed.length > 0 && typeof parsed[0] === 'object') {
+                    return (
+                      <JsonSpreadsheetEditor
+                        data={parsed}
+                        loading={loading}
+                        error={error}
+                        onSave={async (newData) => {
+                          setLoading(true);
+                          setNotif(null);
+                          try {
+                            const resp = await fetch('/.netlify/functions/github', {
+                              method: 'POST',
+                              headers: {
+                                Authorization: `Bearer ${token}`,
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                file: selectedFile,
+                                content: JSON.stringify(newData, null, 2),
+                                message: `Update ${selectedFile}`,
+                              }),
+                            });
+                            const data = await resp.json();
+                            if (data.error) throw new Error(data.error);
+                            setNotif({ type: 'success', message: 'File saved successfully!' });
+                            fetchFiles();
+                            fetchFileContent(selectedFile);
+                          } catch (err: any) {
+                            setNotif({ type: 'error', message: 'Failed to save file.' });
+                          } finally {
+                            setLoading(false);
+                          }
+                        }}
+                      />
+                    );
+                  } else {
+                    // Fallback: textarea editor
+                    return (
+                      <>
+                        {/* File metadata */}
+                        <Box mb={1}>
+                          <Typography variant="caption" color="text.secondary">
+                            <b>Name:</b> {selectedFile}
+                            {fileMeta?.size && <> &nbsp; <b>Size:</b> {fileMeta.size} bytes</>}
+                            {fileMeta?.url && (
+                              <>
+                                &nbsp; <a href={fileMeta.url} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                              </>
+                            )}
+                          </Typography>
+                        </Box>
+                        <textarea
+                          style={{ width: '100%', minHeight: 180, fontFamily: 'monospace', fontSize: 14, marginBottom: 8 }}
+                          value={editContent}
+                          onChange={e => setEditContent(e.target.value)}
+                        />
+                        <Box display="flex" gap={1}>
+                          <Button variant="contained" color="primary" size="small" onClick={async () => {
+                            setLoading(true);
+                            setNotif(null);
+                            try {
+                              const resp = await fetch('/.netlify/functions/github', {
+                                method: 'POST',
+                                headers: {
+                                  Authorization: `Bearer ${token}`,
+                                  'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                  file: selectedFile,
+                                  content: editContent,
+                                  message: `Update ${selectedFile}`,
+                                }),
+                              });
+                              const data = await resp.json();
+                              if (data.error) throw new Error(data.error);
+                              setNotif({ type: 'success', message: 'File saved successfully!' });
+                              fetchFiles();
+                              fetchFileContent(selectedFile);
+                            } catch (err: any) {
+                              setNotif({ type: 'error', message: 'Failed to save file.' });
+                            } finally {
+                              setLoading(false);
+                            }
+                          }}>Save</Button>
+                          <Button variant="outlined" color="error" size="small" onClick={() => setConfirmDelete(true)}>
+                            Delete
+                          </Button>
+                        </Box>
+                      </>
+                    );
+                  }
+                })()
               ) : (
                 <Typography variant="body2" color="text.secondary">Select a file to view its content.</Typography>
               )}

@@ -1,2 +1,61 @@
 # Local Netlify folder
-.netlify
+.netlify/
+
+# Node.js dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+coverage/
+*.log
+
+# Vite cache
+.vite/
+.vitepress/
+.cache/
+temp/
+tmp/
+
+# Environment variables
+.env
+.env.*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE/editor/project files
+.vscode/
+.idea/
+*.swp
+
+# OS junk
+*.bak
+*.tmp
+
+# Yarn/PNPM/NPM logs and state
+yarn-error.log
+yarn-debug.log*
+npm-debug.log*
+pnpm-debug.log*
+
+# Mac ._ files
+._*
+
+# Optional: Ignore test snapshots
+__snapshots__/
+
+# Optional: Ignore diary/log files if not needed
+diary.txt
+diary2.txt
+logfile.txt
+
+# Ignore lock files if you don't want to commit them (optional)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
