@@ -7,39 +7,171 @@
       "status": "complete"
     },
     {
-      "code": "fi",
-      "name": "Finnish",
-      "progress": 100,
-      "status": "complete"
-    },
-    {
       "code": "es",
       "name": "Spanish",
-      "progress": 85,
-      "status": "in-review"
-    },
-    {
-      "code": "de",
-      "name": "German",
       "progress": 80,
       "status": "in-progress"
     },
     {
-      "code": "fr",
-      "name": "French",
-      "progress": 85,
-      "status": "in-review"
+      "code": "fi",
+      "name": "Finnish",
+      "progress": 80,
+      "status": "in-progress"
     },
     {
       "code": "et",
       "name": "Estonian",
-      "progress": 75,
+      "progress": 80,
       "status": "in-progress"
+    },
+    {
+      "code": "de",
+      "name": "German",
+      "progress": 65,
+      "status": "machine-translation"
     },
     {
       "code": "pl",
       "name": "Polish",
-      "progress": 60,
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "da",
+      "name": "Danish",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "it",
+      "name": "Italian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "nl",
+      "name": "Dutch",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "ro",
+      "name": "Romanian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "tr",
+      "name": "Turkish",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "el",
+      "name": "Greek",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "hu",
+      "name": "Hungarian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "sv",
+      "name": "Swedish",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "pt",
+      "name": "Portuguese",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "cs",
+      "name": "Czech",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "bg",
+      "name": "Bulgarian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "sk",
+      "name": "Slovak",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "no",
+      "name": "Norwegian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "lt",
+      "name": "Lithuanian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "sl",
+      "name": "Slovenian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "lv",
+      "name": "Latvian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "uk",
+      "name": "Ukrainian",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "zh",
+      "name": "Chinese",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "ja",
+      "name": "Japanese",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "ko",
+      "name": "Korean",
+      "progress": 65,
+      "status": "machine-translation"
+    },
+    {
+      "code": "ru",
+      "name": "Russian",
+      "progress": 65,
       "status": "machine-translation"
     }
   ]
