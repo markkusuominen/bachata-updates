@@ -1,0 +1,38 @@
+# .windsurfrules
+
+## Project Structure
+- All source code for the web admin must reside in the web-admin/ directory or its subfolders.
+- Each major feature should have its own subdirectory under web-admin/src/components.
+- Keep serverless functions in web-admin/netlify/functions.
+
+## Code Quality
+- All code must be written in TypeScript for both frontend and backend.
+- Use consistent code formatting (Prettier recommended).
+- Enforce linting using ESLint with recommended settings for React and TypeScript.
+- All components and functions must be documented with JSDoc or TSDoc comments.
+
+## UI/UX
+- Use Material-UI (MUI) or Chakra UI for all UI components.
+- Ensure all forms have validation and user-friendly error messages.
+- All user-facing text must be in English and stored in a central constants or i18n file.
+
+## Authentication & Security
+- Never expose GitHub tokens, secrets, or sensitive environment variables in frontend code.
+- All GitHub API interactions must be routed through Netlify Functions.
+- Only allow authenticated users with collaborator access to make changes.
+
+## Version Control & CI/CD
+- All changes must be committed with clear, descriptive commit messages.
+- Pull requests should be reviewed by at least one other contributor before merging.
+- Netlify deploy previews must be enabled for all pull requests.
+- All dependencies must be declared with explicit versions in package.json.
+
+## Documentation
+- Update README.md and project.md with any new features, dependencies, or setup instructions.
+- Maintain a changelog for significant updates.
+- All new files and directories must be described in project.md.
+
+## Testing
+- All new components and functions must include unit tests.
+- Use Jest and React Testing Library for frontend tests.
+- Ensure all tests pass before merging to main.

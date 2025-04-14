@@ -23,13 +23,18 @@ The interface will support multiple authenticated users, direct editing of files
 
 ---
 
-## 4. Technology Stack
+## 4. Technology Stack (Recommended)
 
-- **Frontend:** React (using Vite, Create React App, or similar)
+- **Frontend:** React (with Vite for fast builds and modern tooling)
+- **Language:** TypeScript (for type safety and maintainability)
+- **UI Library:** Material-UI (MUI) or Chakra UI (for accessible, responsive components)
 - **Backend/API:** Netlify Functions (Node.js serverless functions)
+- **Authentication:** GitHub OAuth (via Netlify Identity or custom OAuth flow in serverless functions)
 - **APIs:** GitHub REST API (for file operations, commits, PRs)
-- **State Management:** React Context or Redux (if needed for complex state)
-- **Validation:** JSON schema validation before save
+- **State Management:** React Context (for simple state) or Redux Toolkit (if complexity grows)
+- **Validation:** Ajv or Zod (for JSON schema validation)
+- **Testing:** Jest + React Testing Library (frontend), Node test runner (backend functions)
+- **CI/CD:** Netlify automatic deploys on push
 
 ---
 
@@ -135,3 +140,42 @@ web-admin/
 ---
 
 **This PRD will guide the implementation of a secure, collaborative, and user-friendly web admin for JSON content management, leveraging Netlify and GitHub for seamless workflow and version control.**
+
+---
+
+## TODO List (Implementation Steps)
+
+- [ ] **Set up repository and Netlify project**
+    - Create new repo or subfolder for web-admin
+    - Connect to Netlify for CI/CD
+    - Set up environment variables (GitHub OAuth, etc.)
+- [ ] **Configure GitHub OAuth**
+    - Register OAuth app in GitHub
+    - Add Client ID/Secret to Netlify
+    - Set correct callback URLs
+- [ ] **Scaffold React + Vite + TypeScript frontend**
+    - Set up project structure
+    - Install Material-UI or Chakra UI
+    - Configure Prettier and ESLint
+- [ ] **Create Netlify Functions backend**
+    - Implement GitHub API integration (read/write JSON, commits/PRs)
+    - Securely handle authentication and secrets
+- [ ] **Develop authentication flow**
+    - GitHub login/logout UI
+    - Display user info and permissions
+- [ ] **Build JSON file management UI**
+    - List and select JSON files
+    - Table/form editor for entries
+    - Add/edit/delete with validation
+- [ ] **Implement save (commit/PR) functionality**
+    - Commit changes to main or open PR
+    - Show success/error notifications
+- [ ] **Testing**
+    - Write unit tests for components and functions
+    - Test authentication and file operations
+- [ ] **Documentation**
+    - Update README.md and project.md
+    - Document setup, deployment, and usage
+- [ ] **Review and deploy**
+    - Code review and PR approval
+    - Deploy to production on Netlify
