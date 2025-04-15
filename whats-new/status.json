@@ -8,37 +8,37 @@
     },
     {
       "code": "es",
-      "name": "Spanish, contributor found",
+      "name": "Spanish, translator found",
       "progress": 80,
       "status": "in-progress"
     },
     {
       "code": "fi",
-      "name": "Finnish, contributor found",
+      "name": "Finnish, translator found",
       "progress": 70,
       "status": "in-progress"
     },
     {
       "code": "et",
-      "name": "Estonian, contributor found",
+      "name": "Estonian, translator found",
       "progress": 80,
       "status": "in-progress"
     },
     {
       "code": "de",
-      "name": "German",
+      "name": "German, help wanted",
       "progress": 65,
       "status": "machine-translation"
     },
     {
       "code": "pl",
-      "name": "Polish",
+      "name": "Polish, help wanted",
       "progress": 65,
       "status": "machine-translation"
     },
     {
       "code": "fr",
-      "name": "French",
+      "name": "French, help wanted",
       "progress": 65,
       "status": "machine-translation"
     },
