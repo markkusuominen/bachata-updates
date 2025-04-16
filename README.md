@@ -18,11 +18,14 @@ bachata-updates/
 
 ## Purpose
 
-This repository separates content from code to enable:
+This repository powers the "What's New" page of the Bachata Connection Explorer app. It is designed to make publishing updates, announcements, and status information easy for non-technical contributors and project maintainers. All update content is managed via simple JSON files, allowing changes to be made without touching application code or requiring redeployment.
 
-1. **Easy Content Updates**: Update the "What's New" page without code deployments
-2. **Version History**: Track changes to content over time using Git
-3. **Simplified Management**: Maintain content independently from application code
+Key benefits:
+
+1. **Easy Content Updates**: Update the "What's New" page and related content with simple edits to JSON files—no coding required.
+2. **Version History**: Track every change to updates and announcements using Git version control.
+3. **Simplified Management**: Keep update content separate from app code for safer, more flexible collaboration.
+4. **Web Admin Integration**: Use the browser-based admin interface (see web-admin/) for authenticated, user-friendly editing and publishing of updates.
 
 ## For Contributors
 
