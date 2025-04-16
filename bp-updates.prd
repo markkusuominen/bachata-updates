@@ -1,0 +1,181 @@
+# Product Requirements Document: JSON File Web Admin (bp-updates.prd)
+
+## 1. Purpose & Goals
+
+Create a web-based admin interface to view, edit, and manage JSON files (such as updates.json, upcoming.json, status.json) that power the "What's New" page of the Bachata Connection Explorer.  
+The interface will support multiple authenticated users, direct editing of files in the GitHub repository, and version control via GitHub commits or pull requests.
+
+---
+
+## 2. Hosting & Deployment
+
+- **Platform:** Netlify (for static hosting and serverless functions)
+- **Repository:** Source code for the admin app will be in a dedicated repo (or subfolder), e.g., web-admin/.
+- **Continuous Deployment:** Automatic deploys on push via Netlify CI/CD.
+
+---
+
+## 3. Authentication & Authorization
+
+- **Authentication:** GitHub OAuth (users log in with their GitHub account)
+- **Authorization:** Only authenticated users who are collaborators on the target repo can edit files.
+- **Security:** All GitHub API credentials/secrets are stored securely as Netlify environment variables and never exposed to the frontend.
+
+---
+
+## 4. Technology Stack (Recommended)
+
+- **Frontend:** React (with Vite for fast builds and modern tooling)
+- **Language:** TypeScript (for type safety and maintainability)
+- **UI Library:** Material-UI (MUI) or Chakra UI (for accessible, responsive components)
+- **Backend/API:** Netlify Functions (Node.js serverless functions)
+- **Authentication:** GitHub OAuth (via Netlify Identity or custom OAuth flow in serverless functions)
+- **APIs:** GitHub REST API (for file operations, commits, PRs)
+- **State Management:** React Context (for simple state) or Redux Toolkit (if complexity grows)
+- **Validation:** Ajv or Zod (for JSON schema validation)
+- **Testing:** Jest + React Testing Library (frontend), Node test runner (backend functions)
+- **CI/CD:** Netlify automatic deploys on push
+
+---
+
+## 5. Features
+
+### 5.1 User Authentication
+- GitHub login button
+- Display logged-in user info
+- Restrict editing to authorized users
+
+### 5.2 File Management
+- List available JSON files in the repo (updates.json, upcoming.json, status.json, etc.)
+- Load and display file contents in a user-friendly table or form
+- Add, edit, and delete entries with real-time validation
+- Save changes as a commit or pull request to the repo (with commit message input)
+- Show success/error notifications
+
+### 5.3 Version Control & History
+- Optionally, display recent commit history for each file
+- (Optional) Allow reverting to previous versions
+
+### 5.4 Collaboration
+- Multiple users can log in and edit (subject to repo permissions)
+- All changes are tracked in GitHub (audit trail)
+
+### 5.5 Security & Best Practices
+- Never expose GitHub secrets in frontend code
+- Validate all input before saving
+- Use serverless functions for all GitHub API interactions
+
+---
+
+## 6. Project Structure
+
+```
+web-admin/
+├── public/
+├── src/
+│   ├── components/
+│   ├── App.js
+│   └── index.js
+├── netlify/functions/
+│   └── github.js         # Handles GitHub API securely
+├── package.json
+└── README.md
+```
+
+---
+
+## 7. Implementation Steps
+
+1. **Repo & Netlify Setup**
+   - Create a new repo for the admin app or add as a subfolder
+   - Connect to Netlify for CI/CD
+   - Configure Netlify environment variables for GitHub OAuth credentials
+
+2. **GitHub OAuth Configuration**
+   - Register OAuth app in GitHub (get Client ID/Secret)
+   - Set callback URL to Netlify domain
+
+3. **Frontend Development**
+   - Build React UI for login, file selection, editing, and saving
+   - Integrate with Netlify Functions for backend operations
+
+4. **Backend Development (Netlify Functions)**
+   - Implement endpoints for:
+     - Authenticating users with GitHub
+     - Listing, reading, and writing JSON files via GitHub API
+     - Creating commits and/or PRs
+     - Checking user permissions
+
+5. **Validation & Error Handling**
+   - Add JSON schema validation
+   - Handle and display errors gracefully
+
+6. **Testing**
+   - Test with multiple users and typical workflows
+
+7. **Documentation**
+   - Update project.md and README.md:
+     - Purpose and features of the web-admin app
+     - Setup instructions (Netlify, GitHub OAuth, env vars)
+     - Usage guide for editors
+
+---
+
+## 8. Documentation & Project Management
+
+- Update `project.md` with a description of the new web-admin module.
+- List all dependencies and environment variables in README.md.
+- Document setup, deployment, and usage instructions clearly.
+- Maintain a changelog for major updates.
+
+---
+
+## 9. Future Enhancements (Optional)
+
+- Support for additional file types or structures
+- More granular user roles/permissions
+- Audit log and rollback features
+- UI theming and accessibility improvements
+
+---
+
+**This PRD will guide the implementation of a secure, collaborative, and user-friendly web admin for JSON content management, leveraging Netlify and GitHub for seamless workflow and version control.**
+
+---
+
+## TODO List (Implementation Steps)
+
+- [ ] **Set up repository and Netlify project**
+    - Create new repo or subfolder for web-admin
+    - Connect to Netlify for CI/CD
+    - Set up environment variables (GitHub OAuth, etc.)
+- [ ] **Configure GitHub OAuth**
+    - Register OAuth app in GitHub
+    - Add Client ID/Secret to Netlify
+    - Set correct callback URLs
+- [ ] **Scaffold React + Vite + TypeScript frontend**
+    - Set up project structure
+    - Install Material-UI or Chakra UI
+    - Configure Prettier and ESLint
+- [ ] **Create Netlify Functions backend**
+    - Implement GitHub API integration (read/write JSON, commits/PRs)
+    - Securely handle authentication and secrets
+- [ ] **Develop authentication flow**
+    - GitHub login/logout UI
+    - Display user info and permissions
+- [ ] **Build JSON file management UI**
+    - List and select JSON files
+    - Table/form editor for entries
+    - Add/edit/delete with validation
+- [ ] **Implement save (commit/PR) functionality**
+    - Commit changes to main or open PR
+    - Show success/error notifications
+- [ ] **Testing**
+    - Write unit tests for components and functions
+    - Test authentication and file operations
+- [ ] **Documentation**
+    - Update README.md and project.md
+    - Document setup, deployment, and usage
+- [ ] **Review and deploy**
+    - Code review and PR approval
+    - Deploy to production on Netlify
