@@ -1,6 +1,8 @@
 # Web Admin for Bachata Updates
 
-This directory contains the source code for the browser-based admin interface to view, edit, and manage JSON files (such as updates.json, upcoming.json, status.json) for the "What's New" page of the Bachata Connection Explorer.
+This is the browser-based admin interface for managing update content on the "What's New" page of the Bachata Connection Explorer app. It enables authenticated contributors and project maintainers to easily view, edit, and publish updates, announcements, and translation statuses—all from a user-friendly web UI.
+
+The admin app interacts directly with the GitHub repository, allowing secure, real-time editing of JSON content files without requiring direct repository access or manual Git operations. This streamlines the workflow for both technical and non-technical collaborators.
 
 ## Features
 - GitHub OAuth authentication
