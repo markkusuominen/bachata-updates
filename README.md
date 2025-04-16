@@ -1,9 +1,3 @@
-# Bachata Updates Admin
-
-**Purpose of This App**
-
-The Bachata Updates Admin web application is designed to provide a secure, user-friendly interface for managing and publishing updates related to the Bachata project. It leverages GitHub OAuth authentication to ensure that only authorized collaborators can access administrative features. The app streamlines the process of posting, editing, and managing content updates, making it easier for project maintainers to keep stakeholders informed.
-
 # Bachata Updates Repository
 
 This repository contains content for the "What's New" page of the Bachata Connection Explorer project. The content is stored in JSON files that are dynamically loaded into the application.
